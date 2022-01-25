@@ -1,5 +1,6 @@
-import { Container, Button, Form, Stack } from "react-bootstrap";
+import { Container, Button, Form, Stack, ListGroup } from "react-bootstrap";
 import ToDoList from "./components/ToDoList";
+import { MdDelete, MdCheck } from "react-icons/md";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -19,12 +20,26 @@ function App() {
       setTodos([
         ...todos,
         {
-          id: todos.length + 1,
+          id: todos.length,
           text: todo.trim(),
+          done: false,
         },
       ]);
     }
     setTodo("");
+  };
+
+  const handleComplete = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].done = true;
+    setTodos(newTodos);
+  };
+
+  const handleDelete = (index) => {
+    const newTodos = todos.filter((elem) => {
+      return index !== elem.id;
+    });
+    setTodos(newTodos);
   };
 
   useEffect(() => {
@@ -51,7 +66,37 @@ function App() {
               </Stack>
             </Form>
           </div>
-          <ToDoList todos={todos} />
+          {/* <ToDoList todos={todos} /> */}
+          <div className="list-todo">
+            <ListGroup>
+              {todos.map((item, id) => (
+                <>
+                  <ListGroup.Item key={id}>
+                    <Stack direction="horizontal" gap={2}>
+                      <span
+                        style={{
+                          textDecoration: item.done ? "line-through" : "",
+                        }}>
+                        {item.text}
+                      </span>
+                      <Button
+                        className="ms-auto"
+                        variant="primary"
+                        onClick={() => handleComplete(item.id)}>
+                        <MdCheck />
+                      </Button>
+                      <div className="vr"></div>
+                      <Button
+                        variant="outline-danger"
+                        onClick={() => handleDelete(item.id)}>
+                        <MdDelete />
+                      </Button>
+                    </Stack>
+                  </ListGroup.Item>
+                </>
+              ))}
+            </ListGroup>
+          </div>
         </div>
       </Container>
     </div>
