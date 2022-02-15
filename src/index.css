@@ -1,17 +1,28 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.app {
+  background-color: #383838;
+  color: #fff;
+  min-height: 100vh
 }
 
-nav {
+.todo-app {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  max-width: 750px;
+  padding: 30px;
 }
 
-a {
-  text-decoration: none;
+.form-design {
+  display: flex;
+  align-items: flex-start;
+}
+
+ul {
+  list-style: none;
+}
+
+.list-text {
+  background-color: #111;
+  width: 100px;
+  border-radius: 5px;
+  padding: 5px 20px;
 }
