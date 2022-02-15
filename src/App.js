@@ -1,5 +1,4 @@
 import { Container, Button, Form, Stack, ListGroup } from "react-bootstrap";
-import ToDoList from "./components/ToDoList";
 import { MdDelete, MdCheck } from "react-icons/md";
 import { useEffect, useState } from "react";
 
